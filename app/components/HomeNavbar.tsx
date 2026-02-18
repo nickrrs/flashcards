@@ -12,7 +12,7 @@ export default function HomeNavbar() {
       </div>
       <div className="flex items-center gap-4 text-black">
         <Link href="/login" className="hover:border-b-2 hover:border-[#3590ff]">login</Link>
-        <Link href="/signup" className="hover:border-b-2 hover:border-[#3590ff]">signup</Link>
+        <Link href="/register" className="hover:border-b-2 hover:border-[#3590ff]">signup</Link>
       </div>
     </nav>
   )
