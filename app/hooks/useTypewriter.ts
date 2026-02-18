@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 
 interface UseTypewriterOptions {
@@ -28,11 +30,90 @@ export function useTypewriter({
     const descriptionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const eraseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const isHoveredRef = useRef(false);
+    const hasTriggeredRef = useRef(false);
+    const [isMobile, setIsMobile] = useState(false);
+    
+    // Criar nosso próprio observer para usar o containerRef
+    const [isInView, setIsInView] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    // Observer para inView no mobile
+    useEffect(() => {
+        if (!isMobile) return;
+        
+        const container = containerRef.current;
+        if (!container) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasTriggeredRef.current) {
+                        setIsInView(true);
+                    }
+                });
+            },
+            {
+                threshold: 0.3,
+                rootMargin: "0px",
+            }
+        );
+
+        observer.observe(container);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [isMobile]);
 
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
+        // No mobile, usar inView
+        if (isMobile) {
+            if (isInView && !hasTriggeredRef.current) {
+                hasTriggeredRef.current = true;
+                isHoveredRef.current = true;
+
+                if (titleTimeoutRef.current) clearTimeout(titleTimeoutRef.current);
+                if (descriptionTimeoutRef.current) clearTimeout(descriptionTimeoutRef.current);
+                if (eraseTimeoutRef.current) clearTimeout(eraseTimeoutRef.current);
+
+                setTitleText("");
+                setDescriptionText("");
+
+                let titleIndex = 0;
+                const typeTitle = () => {
+                    if (titleIndex < title.length) {
+                        setTitleText(title.slice(0, titleIndex + 1));
+                        titleIndex++;
+                        titleTimeoutRef.current = setTimeout(typeTitle, titleSpeed);
+                    } else {
+                        let descIndex = 0;
+                        const typeDescription = () => {
+                            if (descIndex < description.length) {
+                                setDescriptionText(description.slice(0, descIndex + 1));
+                                descIndex++;
+                                descriptionTimeoutRef.current = setTimeout(typeDescription, descriptionSpeed);
+                            }
+                        };
+                        typeDescription();
+                    }
+                };
+                typeTitle();
+            }
+            return;
+        }
+
+        // No desktop, usar hover
         const handleMouseEnter = () => {
             isHoveredRef.current = true;
 
@@ -115,7 +196,7 @@ export function useTypewriter({
             if (descriptionTimeoutRef.current) clearTimeout(descriptionTimeoutRef.current);
             if (eraseTimeoutRef.current) clearTimeout(eraseTimeoutRef.current);
         };
-    }, [title, description, titleSpeed, descriptionSpeed, eraseSpeed]);
+    }, [title, description, titleSpeed, descriptionSpeed, eraseSpeed, isMobile, isInView]);
 
     return {
         titleText,

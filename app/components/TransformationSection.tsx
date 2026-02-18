@@ -5,14 +5,14 @@ export default function TransformationSection() {
     <section className="w-full border-y border-gray-100 bg-linear-to-b from-white via-zinc-50 to-white">
       <div className="max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-20 grid gap-10 md:grid-cols-2 items-center">
         <div>
-          <p className="text-sm font-semibold text-[#2b33ff] mb-3 uppercase tracking-wide">
+          <p className="text-sm font-semibold text-[#2b33ff] mb-3 uppercase tracking-wide text-center md:text-left">
             customer transformation
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center md:text-left">
             From &quot;I&apos;ll remember this later&quot; to{" "}
             <span className="text-[#2b33ff]">“it&apos;s already saved”.</span>
           </h2>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-gray-600 mb-6 text-center md:text-left">
             flashcards turns every small but important detail into a card you can
             actually revisit. Instead of losing context, you build a second brain
             tailored to your real life.

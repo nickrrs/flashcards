@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "flashcards",
   description: "never forget small things",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/globe.svg",
   },
   manifest: "/manifest.json",
 };

@@ -1,6 +1,5 @@
 import HomeFooter from "./components/HomeFooter";
 import HomeNavbar from "./components/HomeNavbar";
-import FlashcardDemo from "./components/cards/FlashcardDemo";
 import FeaturesSection from "./components/FeaturesSection";
 import ProblemAgitationSection from "./components/ProblemAgitationSection";
 import TransformationSection from "./components/TransformationSection";
@@ -18,15 +17,15 @@ export default function Home() {
           <div className="w-full max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <div className="flex flex-row flex-wrap items-center justify-center gap-2">
-                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2 md:mb-0">
-                  keep what
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 md:mb-2">
+                  Keep what
                 </h1>
-                <h1 className="text-5xl md:text-6xl font-bold text-[#2b33ff]">
+                <h1 className="text-5xl md:text-6xl font-bold text-[#2b33ff] mb-2">
                   can&apos;t disappear
                 </h1>
               </div>
-              <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-8">
-                create intelligent flashcards organized by context. get
+              <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+                Create intelligent flashcards organized by context. Get
                 AI-powered insights and never forget what matters.
               </p>
             </div>

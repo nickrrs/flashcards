@@ -2,31 +2,26 @@
 
 import FeatureCard from "./FeatureCard";
 import { Plus } from "lucide-react";
-import { useTypewriter } from "@/app/hooks/useTypewriter";
+import { useCreateFlashcardDemo } from "@/app/hooks/useCreateFlashcardDemo";
 
 export default function CreateFlashcardDemo() {
-    const { titleText, descriptionText, containerRef } = useTypewriter({
-        title: "add all files to the staging area of Git",
-        description: "git add .",
-        titleSpeed: 5,
-        descriptionSpeed: 10,
-        eraseSpeed: 20,
-    });
+    const { titleText, descriptionText, containerRef } = useCreateFlashcardDemo();
 
     return (
-        <FeatureCard
-          icon={<Plus className="w-4 h-4" />}
-          title="Create Flashcards"
-          description="Add flashcards with optional titles and descriptions. Perfect for commands, recipes, notes, or anything you want to remember."
-          visual={
-            <div ref={containerRef} className="mt-6 p-5 bg-linear-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 shadow-sm">
+        <div ref={containerRef} className="w-full h-full group">
+          <FeatureCard
+            icon={<Plus className="w-4 h-4" />}
+            title="Create Flashcards"
+            description="Add flashcards with optional titles and descriptions. Perfect for commands, recipes, notes, or anything you want to remember."
+            visual={
+              <div className="mt-6 p-5 bg-linear-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 shadow-sm">
                 <div className="space-y-4">
                   <div>
                     <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">
                       Title (optional)
                     </label>
                     <div className="h-8 bg-white border border-gray-200 rounded px-3 flex items-center">
-                      <span className="text-sm text-gray-600">{titleText}</span>
+                      <span className="text-xs md:text-sm text-gray-600">{titleText}</span>
                     </div>
                   </div>
                   <div>
@@ -34,7 +29,7 @@ export default function CreateFlashcardDemo() {
                       Description
                     </label>
                     <div className="h-20 bg-white border border-gray-200 rounded px-3 py-2 flex items-start">
-                      <span className="text-sm text-gray-600">{descriptionText}</span>
+                      <span className="text-xs md:text-sm text-gray-600">{descriptionText}</span>
                     </div>
                   </div>
                   <button 
@@ -46,6 +41,7 @@ export default function CreateFlashcardDemo() {
                 </div>
             </div>
           }
-        />
+          />
+        </div>
       );
 }
