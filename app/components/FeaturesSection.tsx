@@ -15,13 +15,13 @@ export default function FeaturesSection() {
       {/* Header */}
       <div className="text-center mb-16">
         <p className="text-sm font-semibold text-[#2b33ff] mb-3 uppercase tracking-wide text-center md:text-left">
-          powerful features
+          Powerful features
         </p>
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center md:text-left">
-          built for seamless memorization
+          Built for seamless memorization
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto text-center md:text-left">
-          organize, create, and learn with AI-powered insights. never forget what matters most.
+        <p className="text-lg text-gray-600 max-w-2xl text-center md:text-left">
+          Organize, create, and learn with AI-powered insights. Never forget what matters most.
         </p>
       </div>
 

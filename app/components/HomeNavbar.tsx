@@ -11,8 +11,8 @@ export default function HomeNavbar() {
         <h1 className="text-lg font-bold text-[#2b33ff]">flashcards</h1>
       </div>
       <div className="flex items-center gap-4 text-black">
-        <Link href="/login" className="hover:border-b-2 hover:border-[#3590ff]">login</Link>
-        <Link href="/register" className="hover:border-b-2 hover:border-[#3590ff]">signup</Link>
+        <Link href="/login" className="hover:border-b-2 hover:border-[#2b33ff]">login</Link>
+        <Link href="/register" className="hover:border-b-2 hover:border-[#2b33ff]">signup</Link>
       </div>
     </nav>
   )
