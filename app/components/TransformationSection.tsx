@@ -1,4 +1,14 @@
-import { ArrowRight, CheckCircle2, Sparkles, TimerReset } from "lucide-react";
+import { CheckCircle2, Sparkles, TimerReset } from "lucide-react";
+import TimelineRow from "./cards/TimelineRow";
+
+function TransformationItem({ text }: { text: string }) {
+  return (
+    <li className="flex items-start gap-2">
+      <CheckCircle2 className="w-4 h-4 mt-1 text-[#2b33ff]" />
+      <span className="text-sm text-gray-700">{text}</span>
+    </li>
+  );
+}
 
 export default function TransformationSection() {
   return (
@@ -64,38 +74,6 @@ export default function TransformationSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function TransformationItem({ text }: { text: string }) {
-  return (
-    <li className="flex items-start gap-2">
-      <CheckCircle2 className="w-4 h-4 mt-1 text-[#2b33ff]" />
-      <span className="text-sm text-gray-700">{text}</span>
-    </li>
-  );
-}
-
-type TimelineRowProps = {
-  label: string;
-  before: string;
-  after: string;
-};
-
-function TimelineRow({ label, before, after }: TimelineRowProps) {
-  return (
-    <div className="mb-4 last:mb-0">
-      <p className="text-xs font-medium text-gray-500 mb-1">{label}</p>
-      <div className="flex items-center gap-3 text-xs">
-        <div className="flex-1 rounded-lg bg-gray-50 border border-gray-200 px-3 py-2 text-gray-500">
-          {before}
-        </div>
-        <ArrowRight className="w-4 h-4 text-gray-300 flex-shrink-0" />
-        <div className="flex-1 rounded-lg bg-[#2b33ff]/10 border border-[#2b33ff]/20 px-3 py-2 text-gray-800">
-          {after}
-        </div>
-      </div>
-    </div>
   );
 }
 
